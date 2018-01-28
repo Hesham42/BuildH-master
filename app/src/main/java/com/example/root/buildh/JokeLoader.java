@@ -3,9 +3,6 @@ package com.example.root.buildh;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.jokefactroy.DisplayJoke;
 import com.example.root.myapplication.backend.myApi.MyApi;
@@ -24,7 +21,7 @@ public class JokeLoader extends AsyncTask <Void,Void,String>{
     private static MyApi myApi = null;
     private Context context;
 //    ProgressBar progressBar;
-    public JokeLoader (Context context){
+    public JokeLoader(Context context){
         this.context = context;
 //        progressBar = progress;
     }
@@ -32,10 +29,10 @@ public class JokeLoader extends AsyncTask <Void,Void,String>{
     protected String doInBackground(Void... params) {
 
         if(myApi == null){
-
+//            http://buildh-193414.appspot.com/_ah/api/
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(),null)
-                    .setRootUrl("http://buildh-193414.appspot.com/_ah/api/")
+                    .setRootUrl("http://localhost:8080/_ah/api/")
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
                         public void initialize(AbstractGoogleClientRequest<?> request) throws IOException {
